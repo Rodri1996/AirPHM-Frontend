@@ -4,7 +4,7 @@ import { Appbar, Button, IconButton, TextInput } from "react-native-paper";
 import CardHospesaje from "../components/cardHospesaje";
 import { ScrollView } from "react-native-gesture-handler";
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.bx_pry_home}>
       <View style={styles.bx_inputs_home}>
@@ -23,9 +23,7 @@ export const HomeScreen = () => {
       </Button>
       <ScrollView>
         <View style={styles.bx_cards_home}>
-          <CardHospesaje></CardHospesaje>
-          <CardHospesaje></CardHospesaje>
-          <CardHospesaje></CardHospesaje>
+          <CardHospesaje navigation={navigation}></CardHospesaje>
         </View>
       </ScrollView>
     </View>

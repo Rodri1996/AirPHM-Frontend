@@ -3,9 +3,8 @@ import { StyleSheet } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 // import {AiOutlineStar} from 'react-icons/ai';
 
-const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
-const CardHospesaje = () => (
+const CardHospesaje = ({navigation}) => (
   <Card style={styles.card}>
     <Card.Content>
       {/* <AiOutlineStar/> */}
@@ -23,7 +22,7 @@ const CardHospesaje = () => (
         style={styles.btn_search_home}
         icon="magnify"
         mode="outlined"
-        onPress={() => console.log("Pressed")}
+        onPress={()=>{navigation.navigate("Detalle")}}
       >Ver el detalle</Button>
     </Card.Actions>
   </Card>
