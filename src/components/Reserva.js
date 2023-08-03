@@ -3,12 +3,13 @@ import { Button, Card, Text, TextInput } from "react-native-paper";
 
 export const Reserva = () => {
   return (
-    <View style={{ minHeight: 320, padding: 5 }}>
+    <View style={{ minHeight: 320, padding: 5, width:380,alignSelf:"center", }}>
       <Card.Content
         style={{
           flex: 1,
           flexDirection: "column",
           justifyContent: "space-evenly",
+          // maxWidth:380,
         }}
       >
         <Text variant="titleSmall">Costo por noche: $2550.44</Text>
