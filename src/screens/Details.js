@@ -3,10 +3,12 @@ import { Card, Text } from "react-native-paper";
 import CardComentario from "../components/CardComentario";
 import { View } from "react-native";
 import { Reserva } from "../components/Reserva";
+import NavBar from "../components/NavBar";
 
 export const DetailsScreen = ({ navigation }) => {
   return (
     <ScrollView>
+      <NavBar></NavBar>
       <View style={{ padding: 10 }}>
         <Text variant="titleLarge">
           Piso de diseño moderno en el centro de la ciudad
