@@ -4,7 +4,10 @@ import { Text } from "react-native-paper";
 import { SceneMap, TabView } from "react-native-tab-view";
 import CardHospesaje from "./cardHospesaje";
 import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from '@react-navigation/native';
 
+export const Tabs = () => {
+  const navigation = useNavigation();
 const primeraRuta = () => (
   <ScrollView>
     <View style={{
@@ -12,7 +15,7 @@ const primeraRuta = () => (
         backgroundColor:'red',
         alignItems:'center',
     }}>
-        <CardHospesaje></CardHospesaje>
+        <CardHospesaje navigation={navigation} operacion="Calificar"></CardHospesaje>
     </View>
   </ScrollView>
 );
@@ -36,7 +39,6 @@ const renderScene = SceneMap({
   publicaciones: cuartaRuta,
 });
 
-export const Tabs = () => {
   const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
