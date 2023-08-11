@@ -71,9 +71,18 @@ export const DetailsScreen = ({ navigation }) => {
         </View>
         <Text variant="titleSmall">Comentarios</Text>
         <ScrollView horizontal contentContainerStyle={{marginLeft:15,}}>
-            <CardComentario></CardComentario>
-            <CardComentario></CardComentario>
-            <CardComentario></CardComentario>
+            <CardComentario
+              image={
+                "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png"
+              }
+              title={"Rodrigo Manuel Nieto"}
+              subtitle={"11 de agosto 2023"}
+              description={
+                "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas"
+              }
+              score={4}
+              component={"detalle"}
+            ></CardComentario>
         </ScrollView>
       </View>
     </ScrollView>

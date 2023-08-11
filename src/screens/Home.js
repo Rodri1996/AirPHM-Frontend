@@ -24,6 +24,8 @@ export const HomeScreen = ({navigation}) => {
       <ScrollView>
         <View style={styles.bx_cards_home}>
           <CardHospesaje navigation={navigation} operacion="Ver el detalle"></CardHospesaje>
+          <CardHospesaje navigation={navigation} operacion="Ver el detalle"></CardHospesaje>
+          <CardHospesaje navigation={navigation} operacion="Ver el detalle"></CardHospesaje>
         </View>
       </ScrollView>
     </View>
