@@ -5,6 +5,20 @@ import CardHospesaje from "../components/cardHospesaje";
 import { ScrollView } from "react-native-gesture-handler";
 
 export const HomeScreen = ({navigation}) => {
+
+  const detalle=()=>(
+    <Button
+      style={styles.btn_search_home}
+      icon="magnify"
+      mode="outlined"
+      onPress={() => {
+        navigation.navigate("Detalle");
+      }}
+    >
+      Detalle
+    </Button>
+  )
+
   return (
     <View style={styles.bx_pry_home}>
       <View style={styles.bx_inputs_home}>

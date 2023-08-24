@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StatusBar, StyleSheet, View, useWindowDimensions } from "react-native";
-import { Text } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import CardHospesaje from "./cardHospesaje";
 import { ScrollView } from "react-native-gesture-handler";
@@ -83,10 +83,28 @@ export const Tabs = () => {
     </ScrollView>
   );
 
+  const saludo = () => {
+    console.log("HOLA,VENGO DEL TAB");
+  };
   const publicaciones = () => (
-    <View style={[styles.container, { backgroundColor: "green" }]}>
-      <Text>Publicaciones</Text>
-    </View>
+    <ScrollView>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+        }}
+      >
+        <Button
+          icon="pencil"
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Publicar
+        </Button>
+        <CardHospesaje navigation={navigation}></CardHospesaje>
+        <CardHospesaje navigation={navigation}></CardHospesaje>
+      </View>
+    </ScrollView>
   );
 
   const renderScene = SceneMap({
