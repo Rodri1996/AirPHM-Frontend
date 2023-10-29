@@ -9,43 +9,18 @@ import { Appbar, Button, IconButton, TextInput } from "react-native-paper";
 import { Tabs } from "../components/Tabs";
 export const PerfilScreen = () => {
   return (
-    <ScrollView contentContainerStyle={{height:"100%"}}>
+    <View style={{ height: "100%", justifyContent:'space-between'}}>
       <NavBar></NavBar>
-      <View style={perfil.user_box}>
+      <View>
         <Avatar.Image
-          size={156}
+          size={124}
           source={{
             uri: "https://tntsports.com.ar/__export/1621696001935/sites/tntsports/img/2021/05/22/lionel_messi_10_seleccion_argentina_nueva_camiseta.jpg",
           }}
         />
         <Text>Lionel Andres Messi</Text>
-        <TextInput
-          style={perfil.input}
-          label={"Fecha de nacimiento"}
-        ></TextInput>
-        <TextInput style={perfil.input} label={"Pais de origen"}></TextInput>
-        <Text>Edad: 36 años</Text>
-        <Text>Credito: $100,00</Text>
-        <Button
-          mode="contained"
-          onPress={() => console.log("Pressed")}
-        >
-          Suma credito
-        </Button>
       </View>
       <Tabs></Tabs>
-    </ScrollView>
+    </View>
   );
 };
-
-const perfil = StyleSheet.create({
-  input: {
-    minWidth: 250,
-  },
-  user_box: {
-    minHeight: 400,
-    padding: 10,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-});

@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-const CardComentario = ({
+export const CardComentario = ({
   image,
   title,
   subtitle,

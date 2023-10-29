@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 // import {AiOutlineStar} from 'react-icons/ai';
 
-const CardHospesaje = ({ navigation, operacion }) => {
+export const CardHospesaje = ({ navigation, operacion }) => {
   
 
   const renderVerDetalle = () => (
