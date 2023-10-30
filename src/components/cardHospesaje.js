@@ -3,7 +3,11 @@ import { StyleSheet } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 // import {AiOutlineStar} from 'react-icons/ai';
 
-export const CardHospesaje = ({ navigation, operacion }) => {
+export const CardHospesaje = ({ 
+  navigation, 
+  operacion,
+  unHospedaje
+}) => {
   
 
   const renderVerDetalle = () => (
@@ -44,19 +48,19 @@ export const CardHospesaje = ({ navigation, operacion }) => {
     <Card style={styles.card}>
       <Card.Content>
         {/* <AiOutlineStar/> */}
-        <Text variant="titleLarge">Departamento en centro turistico</Text>
+        <Text variant="titleLarge">{unHospedaje.nombre}</Text>
         <Text variant="bodyMedium">
-          Cuenta con dos baños,living luminoso y una cochera
+          {unHospedaje.descripcion}
         </Text>
-        <Text variant="titleSmall">Av Siempre Viva 1234</Text>
+        <Text variant="titleSmall">{unHospedaje.ubicacion}</Text>
       </Card.Content>
       <Card.Cover
-        source={{ uri: "https://picsum.photos/700" }}
+        source={{ uri: unHospedaje.imagen }}
         style={{ width: 370, alignSelf: "center" }}
       />
       <Card.Content>
-        <Text variant="titleSmall">Costo por noche: $2550.44</Text>
-        <Text variant="titleSmall">Costo total: $10.000.00</Text>
+        <Text variant="titleSmall">Costo por noche: ${unHospedaje.costoPorNoche}</Text>
+        <Text variant="titleSmall">Costo total: ${unHospedaje.costoTotal}</Text>
       </Card.Content>
       <Card.Actions>{renderizarBoton()}</Card.Actions>
     </Card>
