@@ -16,7 +16,7 @@ export const CardHospesaje = ({
       icon="magnify"
       mode="outlined"
       onPress={() => {
-        navigation.navigate("Detalle");
+        navigation.navigate("Detalle", {unHospedaje});
       }}
     >
       {operacion}

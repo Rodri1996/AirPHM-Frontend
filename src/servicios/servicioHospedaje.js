@@ -19,6 +19,13 @@ class ServicioHospedaje{
           );
         return hospedajesEncontrados.data;
         }
+
+        async traerDetallesHospedaje(id){
+          let detalleConseguido = await axios.get(
+            `${REST_SERVER_URL}/hospedajes/${id}`);  
+            console.info(detalleConseguido.data);
+            return detalleConseguido.data;
+        }
 }
 
 export const servicioHospedaje = new ServicioHospedaje();
