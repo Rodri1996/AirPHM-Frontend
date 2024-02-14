@@ -4,71 +4,41 @@ import { View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { servicioUsuario } from "../servicios/servicioUsuario";
 
-export const LoginScreen = ({ navigation }) => {
-    const [usuario, setUsuario] = useState('');
-    const [contraseña, setContraseña] = useState('');
-
-    const iniciarSesion=async ()=>{
-      await servicioUsuario.iniciar(usuario,contraseña);
-      navigation.navigate("Home");
-      restaurarValoresIniciales();
-    }
-
-    const restaurarValoresIniciales=()=>{
-      setUsuario('');
-      setContraseña('');
-    }
-
+export const LoginScreen = () => {
   return (
     <View
       style={{
-        ...estilosGenerales.caja_primaria,
+        // backgroundColor: "red",
+        height: "100%",
+        padding: "10px",
         justifyContent: "center",
       }}
     >
       <View
         style={{
-          padding: 5,
-          minHeight: 300,
-          minWidth: 370,
-          justifyContent: "space-around",
-          alignSelf: "center",
+          // backgroundColor: "green",
+          justifyContent: "space-evenly",
+          maxHeight: "400px",
+          height: "100%",
         }}
       >
-        <Text style={{ fontSize: 40, alignSelf: "center" }}>Airvphm</Text>
+        <Text variant="displayLarge" style={{textAlign:"center"}}>Inicio de sesión</Text>
         <TextInput
-          label="Nombre de usuario"
-          value={usuario}
-          left={<TextInput.Icon icon="account-circle" />}
-          onChangeText={(valor)=>{setUsuario(valor)}}
+          label="Usuario"
+          // value={text}
+          //onChangeText={text => setText(text)}
         />
         <TextInput
           label="Contraseña"
-          value={contraseña}
-          left={<TextInput.Icon icon="key" />}
-          secureTextEntry={true}
-          onChangeText={(valor)=>{setContraseña(valor)}}
+          // value={text}
+          //onChangeText={text => setText(text)}
         />
-        <Button
-          style={estilosGenerales.boton}
-          mode="contained"
-          onPress={iniciarSesion}
-        >
-          <Text style={{ fontSize: 20, color: "white" }}>Iniciar sesión</Text>
+        <Button mode="contained" onPress={() => console.log("Pressed")} style={{alignSelf:"center",padding:"5px", backgroundColor:"#3e8bdf"}}>
+          <Text variant="headlineLarge">
+          Iniciar sesión
+          </Text>
         </Button>
       </View>
     </View>
   );
 };
-
-const estilosGenerales = StyleSheet.create({
-  caja_primaria: {
-    height: "100%",
-    padding: 10,
-  },
-  boton: {
-    alignSelf: "center",
-    margin: 10,
-    padding: 5,
-  },
-});
