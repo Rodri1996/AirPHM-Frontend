@@ -1,106 +1,151 @@
-import { View } from "react-native";
-import { StyleSheet } from "react-native";
-import { Appbar, Button, IconButton, TextInput } from "react-native-paper";
-import CardHospesaje from "../components/cardHospesaje";
-import { ScrollView } from "react-native-gesture-handler";
-import { useState } from "react";
-import { servicioHospedaje } from "../servicios/servicioHospedaje";
+import * as React from "react";
+import { StyleSheet, View } from "react-native";
+import {
+  Appbar,
+  Button,
+  Card,
+  Chip,
+  Searchbar,
+  Text,
+  TouchableRipple,
+} from "react-native-paper";
 
-export const HomeScreen = ({navigation}) => {
-
-  const [hospedajes,setHospedajes]=useState([]);
-  const [destino,setDestino]=useState("");
-  const [fechaDesde,setFechaDesde]=useState("");
-  const [fechaHasta,setFechaHasta]=useState("");
-  const [pasajeros,setPasajeros]=useState(0);
-  const [puntaje,setPuntaje]=useState(0);
-
-  const detalle=()=>(
-    <Button
-      style={styles.btn_search_home}
-      icon="magnify"
-      mode="outlined"
-      onPress={() => {
-        navigation.navigate("Detalle");
+export const HomeScreen = () => {
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const handleHomePress = () => {
+    console.log("Home clicked");
+  };
+  const irAPerfil = () => {
+    console.log("clicked");
+  };
+  const cerrarSesion = () => {
+    console.log("clicked");
+  };
+  return (
+    <View
+      style={{
+        // backgroundColor: "red",
+        height: "100%",
       }}
     >
-      Detalle
-    </Button>
-  )
-
-      const buscarHospedajes=async ()=>{
-        let hospedajesEncontrados = await servicioHospedaje.traerHospedajes(
-          destino,fechaDesde,fechaHasta,pasajeros,puntaje
-        );
-        setHospedajes(hospedajesEncontrados);
-      }
-
-  return (
-    <View style={styles.bx_pry_home}>
-      <View style={styles.bx_inputs_home}>
-        <TextInput style={styles.input_home} label={"Destino"}
-          value={destino} 
-          onChangeText={(value)=>setDestino(value)}
-        ></TextInput>
-        <TextInput style={styles.input_home} label={"Fecha desde"}
-          value={fechaDesde}
-          onChangeText={(value)=>setFechaDesde(value)}
-        ></TextInput>
-        <TextInput style={styles.input_home} label={"Fecha hasta"}
-          value={fechaHasta}
-          onChangeText={(value)=>setFechaHasta(value)}
-        ></TextInput>
-        <TextInput style={styles.input_home} label={"Pasajeros"}
-          value={pasajeros}
-          keyboardType="number-pad"
-          onChangeText={(value)=>setPasajeros(value)}
-        ></TextInput>
-      </View>
-       <Button
-        style={styles.btn_search_home}
-        icon="magnify"
-        mode="contained"
-        onPress={buscarHospedajes}
-      >
-        Buscar
-      </Button>
-      <ScrollView>
-        <View style={styles.bx_cards_home}>
-        { hospedajes.map((hospedaje)=>
-          <CardHospesaje 
-            key={hospedaje.id}
-            navigation={navigation} 
-            operacion="Ver el detalle"
-            unHospedaje={hospedaje}
-            ></CardHospesaje>)
-        }
+      <Appbar.Header>
+        <Appbar.BackAction />
+        <Appbar.Content title="App" />
+        <TouchableRipple onPress={handleHomePress}>
+          <Appbar.Action icon="home" />
+        </TouchableRipple>
+        <TouchableRipple onPress={irAPerfil}>
+          <Appbar.Action icon="account-circle" />
+        </TouchableRipple>
+        <TouchableRipple onPress={cerrarSesion}>
+          <Appbar.Action icon="logout" />
+        </TouchableRipple>
+      </Appbar.Header>
+      <View style={{ padding: "10px" }}>
+        <Searchbar
+          placeholder="Destino"
+          style={styles.buscador}
+          icon="map"
+          // onChangeText={setSearchQuery}
+          // value={searchQuery}
+        />
+        <Searchbar
+          placeholder="Desde"
+          style={styles.buscador}
+          icon="calendar"
+          // onChangeText={setSearchQuery}
+          // value={searchQuery}
+        />
+        <Searchbar
+          placeholder="Hasta"
+          style={styles.buscador}
+          icon="calendar"
+          // onChangeText={setSearchQuery}
+          // value={searchQuery}
+        />
+        <Searchbar
+          placeholder="Pasajeros"
+          style={styles.buscador}
+          icon="account-multiple"
+          // onChangeText={setSearchQuery}
+          // value={searchQuery}
+        />
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          <Chip
+            style={{ maxWidth: "150px",margin:"5px" }}
+            onPress={() => console.log("Pressed")}
+            // selected="true" . Modificarlo con un estado cada vez que se clickea
+          >
+            5 puntos
+          </Chip>
+          <Chip
+            style={{ maxWidth: "150px",margin:"5px" }}
+            onPress={() => console.log("Pressed")}
+            // selected="true" . Modificarlo con un estado cada vez que se clickea
+          >
+            4 puntos o más
+          </Chip>
+          <Chip
+            style={{ maxWidth: "150px",margin:"5px" }}
+            onPress={() => console.log("Pressed")}
+            // selected="true" . Modificarlo con un estado cada vez que se clickea
+          >
+            3 puntos o más
+          </Chip>
+          <Chip
+            style={{ maxWidth: "150px",margin:"5px" }}
+            onPress={() => console.log("Pressed")}
+            // selected="true" . Modificarlo con un estado cada vez que se clickea
+          >
+            2 puntos o más
+          </Chip>
+          <Chip
+            style={{ maxWidth: "150px",margin:"5px" }}
+            onPress={() => console.log("Pressed")}
+            // selected="true" . Modificarlo con un estado cada vez que se clickea
+          >
+            Traer a todos
+          </Chip>
         </View>
-      </ScrollView>
+        <Button
+          icon="magnify"
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+          style={{ alignSelf: "center" }}
+        >
+          Buscar
+        </Button>
+
+        <Card style={{ marginTop: "5px" }}>
+          <Card.Content>
+            <Text variant="titleLarge">Titulo</Text>
+            <Text variant="bodyMedium">Descripcion</Text>
+            <Text variant="bodyMedium">Ubicacion</Text>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-around" }}
+            >
+              <Text variant="bodyMedium">$10.000000000000</Text>
+              <Text variant="bodyMedium">$30.0000000000</Text>
+            </View>
+          </Card.Content>
+          <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+          <Card.Actions>
+            <Button
+              style={{ alignSelf: "center" }}
+              mode="contained"
+              onPress={() => console.log("Pressed")}
+            >
+              Ver el detalle
+            </Button>
+          </Card.Actions>
+        </Card>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  bx_pry_home: {
-    height: "100%",
-  },
-  bx_cards_home: {
-    height: "100%",
-    flex:1,
-    flexDirection:'row',
-    flexWrap:'wrap',
-    justifyContent:'center',
-  },
-  btn_search_home: {
-    alignSelf: "center",
-    margin: 10,
-  },
-  bx_inputs_home:{
-    flexDirection:'row',
-    flexWrap:'wrap',
-    justifyContent:'center',
-  },
-  input_home:{
-    width:300,margin:5,
+  buscador: {
+    margin: 5,
   },
 });
