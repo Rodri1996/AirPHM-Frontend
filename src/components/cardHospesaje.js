@@ -1,78 +1,32 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
-import { Avatar, Button, Card, Text } from "react-native-paper";
-// import {AiOutlineStar} from 'react-icons/ai';
+import { StyleSheet, View } from "react-native";
+import { Button, Card, Text } from "react-native-paper";
 
-export const CardHospesaje = ({ 
-  navigation, 
-  operacion,
-  unHospedaje
-}) => {
-  
-
-  const renderVerDetalle = () => (
-    <Button
-      style={styles.btn_search_home}
-      icon="magnify"
-      mode="outlined"
-      onPress={() => {
-        navigation.navigate("Detalle", {unHospedaje});
-      }}
-    >
-      {operacion}
-    </Button>
-  );
-
-  const calificar=()=>(
-    <Button
-      style={styles.btn_search_home}
-      mode="outlined"
-      onPress={() => {
-        console.log("califico")
-      }}
-    >
-      {operacion}
-    </Button>
-  )
-
-  const renderizarBoton = () => {
-    if (operacion == "Ver el detalle") {
-      return renderVerDetalle();
-    }
-    if (operacion == "Calificar") {
-      return calificar();
-    }
-  };
-
+export const CardHospesaje = () => {
   return (
-    <Card style={styles.card}>
+    <Card style={cardHospesaje.contenedor_primario}>
       <Card.Content>
-        {/* <AiOutlineStar/> */}
-        <Text variant="titleLarge">{unHospedaje.nombre}</Text>
-        <Text variant="bodyMedium">
-          {unHospedaje.descripcion}
-        </Text>
-        <Text variant="titleSmall">{unHospedaje.ubicacion}</Text>
+        <Text variant="titleLarge">Titulo</Text>
+        <Text variant="bodyMedium">Descripcion</Text>
+        <Text variant="bodyMedium">Ubicacion</Text>
+        <View style={cardHospesaje.precios}>
+          <Text variant="bodyMedium">$10.000000000000</Text>
+          <Text variant="bodyMedium">$30.0000000000</Text>
+        </View>
       </Card.Content>
-      <Card.Cover
-        source={{ uri: unHospedaje.imagen }}
-        style={{ width: 370, alignSelf: "center" }}
-      />
-      <Card.Content>
-        <Text variant="titleSmall">Costo por noche: ${unHospedaje.costoPorNoche}</Text>
-        <Text variant="titleSmall">Costo total: ${unHospedaje.costoTotal}</Text>
-      </Card.Content>
-      <Card.Actions>{renderizarBoton()}</Card.Actions>
+      <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+      <Card.Actions>
+        <Button mode="contained" onPress={() => console.log("Pressed")}>
+          Ver el detalle
+        </Button>
+      </Card.Actions>
     </Card>
   );
 };
 
-export default CardHospesaje;
-
-const styles = StyleSheet.create({
-  card: {
-    margin: 10,
-    maxWidth: 500,
-    minWidth: 373,
-  },
+const cardHospesaje = StyleSheet.create({
+  contenedor_primario: { marginTop: "5px" },
+  precios: { flexDirection: "row", justifyContent: "space-around" },
 });
+
+export default CardHospesaje;

@@ -1,19 +1,30 @@
-import React from 'react';
-import { Appbar } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
+import { Appbar, TouchableRipple } from "react-native-paper";
 
 const NavBar = () => {
-  const navigation = useNavigation();
-
-  const navigateToProfile = () => {
-    navigation.navigate('Perfil');
+  
+  const handleHomePress = () => {
+    console.log("Home clicked");
+  };
+  const irAPerfil = () => {
+    console.log("clicked");
+  };
+  const cerrarSesion = () => {
+    console.log("clicked");
   };
 
   return (
     <Appbar.Header>
-      <Appbar.BackAction onPress={() => navigation.goBack()} />
-      <Appbar.Content title="Atrás" />
-      <Appbar.Action icon="account" onPress={navigateToProfile} />
+      <Appbar.BackAction />
+      <Appbar.Content title="App" />
+      <TouchableRipple onPress={handleHomePress}>
+        <Appbar.Action icon="home" />
+      </TouchableRipple>
+      <TouchableRipple onPress={irAPerfil}>
+        <Appbar.Action icon="account-circle" />
+      </TouchableRipple>
+      <TouchableRipple onPress={cerrarSesion}>
+        <Appbar.Action icon="logout" />
+      </TouchableRipple>
     </Appbar.Header>
   );
 };
